@@ -24,9 +24,7 @@ public class Polynomial {
                 int base = Integer.parseInt(baseStr);
                 BigInteger decimalVal = new BigInteger(valueStr, base);
                 roots.add(decimalVal);
-            } catch (Exception e) {
-                
-            }
+            } catch (Exception e) { }
         }
 
         roots = roots.subList(0, k);
@@ -40,19 +38,12 @@ public class Polynomial {
             Arrays.fill(newCoeffs, BigInteger.ZERO);
             for (int i = 0; i < coeffs.length; i++) {
                 if (coeffs[i] == null) continue;
-                if (i + 1 < coeffs.length) {
-                    newCoeffs[i + 1] = newCoeffs[i + 1].add(coeffs[i]);
-                }
+                if (i + 1 < coeffs.length) newCoeffs[i + 1] = newCoeffs[i + 1].add(coeffs[i]);
                 newCoeffs[i] = newCoeffs[i].add(coeffs[i].negate().multiply(root));
             }
             coeffs = newCoeffs;
         }
 
-        System.out.println("Polynomial Coefficients:");
-        for (int i = coeffs.length - 1; i >= 0; i--) {
-            System.out.print(coeffs[i] + "x^" + i);
-            if (i > 0) System.out.print(" + ");
-        }
-        System.out.println();
+        System.out.println("C value: " + coeffs[0]);
     }
 }
